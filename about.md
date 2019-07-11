@@ -8,7 +8,7 @@ good good study
 
 ### More Information
 
-read,study,think
+read study think
 
 ### Contact me
 
