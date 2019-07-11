@@ -4,11 +4,11 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+good good study
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+read,study,think
 
 ### Contact me
 
