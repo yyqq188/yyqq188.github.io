@@ -4,11 +4,16 @@
 
 ### 启动DNS服务器
 找一台新的linux host,装好docker,大家可以用vagrant来创建一台，然后创建一个dnsmasq的容器,并运行
+
 `docker run -d -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dns-server andyshinn/dnsmasq`
 
 ### 配置DNS服务
 #### 进入容器
-```docker exec -it dns-server /bin/sh```
+
+```
+docker exec -it dns-server /bin/sh
+```
+
 1 首先配置上行的真正的dns服务器地址,毕竟这只是个本地代理,不了解外部规则,创建文件：
 ```vim /etc/resolv.dnsmasq```
 添加内容
