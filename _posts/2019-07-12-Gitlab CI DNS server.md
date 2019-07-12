@@ -8,27 +8,25 @@
 
 ### 配置DNS服务
 #### 进入容器
-`docker exec -it dns-server /bin/sh`
+```docker exec -it dns-server /bin/sh```
 1 首先配置上行的真正的dns服务器地址,毕竟这只是个本地代理,不了解外部规则,创建文件：
-```
-vim /etc/resolv.dnsmasq
-```
+```vim /etc/resolv.dnsmasq```
 添加内容
-`nameserver 114.114.114.114 nameserver 8.8.8.8`
+```nameserver 114.114.114.114 nameserver 8.8.8.8```
 2 配置本地解析规则,这才是我们的真正目的.新建配置文件
-`vi /etc/dnsmasqhosts`
+```vi /etc/dnsmasqhosts```
 添加解析规则,其中192.168.211.10是gitlab服务器地址
-`192.168.211.10 dict.gitlab.com`
+```192.168.211.10 dict.gitlab.com```
 3 修改dnsmasq配置文件,指定使用上述我们自定义的配置文件
-`vi /etc/dnsmasq.conf`
-`resolv-file=/etc/resolv.dnsmasq addn-hosts=/etc/dnsmasqhosts`
+```vi /etc/dnsmasq.conf```
+```resolv-file=/etc/resolv.dnsmasq addn-hosts=/etc/dnsmasqhosts```
 
 回到宿主机,重启dns-server容器服务
-`docker restart dns-server`
+```docker restart dns-server```
 这时候这台docker host就是一台DNS服务器了,假如它的地址是192.168.99.100
 
 ### 测试
-在gitlab ci机器上修改 `sudo vim /etc/resolv.conf`
-`nameserver 192.168.99.100`
+在gitlab ci机器上修改 ```sudo vim /etc/resolv.conf```
+```nameserver 192.168.99.100```
 这时候在本地就可以ping通dict.gitlab.com
 在gitlab ci创建一个container,进入container后也可以ping通
