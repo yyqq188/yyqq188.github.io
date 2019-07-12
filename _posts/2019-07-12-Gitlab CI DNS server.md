@@ -3,7 +3,7 @@
 这时候在gitlab ci服务器上是ping不同dict.gitlab.com的
 
 ### 启动DNS服务器
-找一台新的linux host,装好docker,大家可以用vagrant来创建一台，然后创建一个dnsmasq的容器,并运行
+*找一台新的linux host,装好docker,大家可以用vagrant来创建一台，然后创建一个dnsmasq的容器,并运行*
 
 `docker run -d -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dns-server andyshinn/dnsmasq`
 
